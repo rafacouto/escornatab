@@ -37,17 +37,17 @@
 
 /*
 // escornabot codes
-#define CODE_0 "g"
-#define CODE_1 "n"
-#define CODE_2 "s"
-#define CODE_3 "e"
-#define CODE_4 "w"
-#define CODE_5 "E"
-#define CODE_6 "W"
-#define CODE_7 "G"
-#define TAB_SEPARATOR "\n"
+#define CODE_0 ""
+#define CODE_1 "n\n"
+#define CODE_2 "s\n"
+#define CODE_3 "e\n"
+#define CODE_4 "w\n"
+#define CODE_5 "E\n"
+#define CODE_6 "W\n"
+#define CODE_7 "G\n"
+#define TAB_SEPARATOR ""
 #define ROW_SEPARATOR ""
-#define PRG_SEPARATOR ""
+#define PRG_SEPARATOR "g\n"
 */
 
 #endif // _CONFIGURATION_H
