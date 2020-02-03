@@ -3,24 +3,24 @@
 #define _CONFIGURATION_H
 
 // send button
-#define PIN_BUTTON 2
+#define PIN_BUTTON A0
 
 // 9 pins by row (3 tabs)
-#define PIN_TAB_1_1 5
-#define PIN_TAB_1_2 6
-#define PIN_TAB_1_3 7
-#define PIN_TAB_2_1 8
-#define PIN_TAB_2_2 9
-#define PIN_TAB_2_3 10
-#define PIN_TAB_3_1 11
-#define PIN_TAB_3_2 12
-#define PIN_TAB_3_3 13
+#define PIN_TAB_1_1 2
+#define PIN_TAB_1_2 3
+#define PIN_TAB_1_3 4
+#define PIN_TAB_2_1 5
+#define PIN_TAB_2_2 6
+#define PIN_TAB_2_3 7
+#define PIN_TAB_3_1 8
+#define PIN_TAB_3_2 9
+#define PIN_TAB_3_3 10
 
 // connected rows (3 tabs by row)
 #define ROW_ACTIVATION_MILLIS 100
 #define ROW_COUNT 2
-#define PIN_ROW_1 A0
-#define PIN_ROW_2 A1
+#define PIN_ROW_1 11
+#define PIN_ROW_2 13
 
 // generic codes
 #define CODE_0 "000"
