@@ -20,7 +20,7 @@
 #include "configuration.h"
 #include "EscornaTab.h"
 
-
+// EscornaTab configuration
 static const EscornaTab::Config cfg = 
 {
     buttonPin: PIN_BUTTON,
@@ -34,17 +34,22 @@ static const EscornaTab::Config cfg =
 };
 
 
+// EscornaTab instance
 EscornaTab escorna_tab(cfg, Serial);
 
 
 void setup()
 {
+    // initialize serial stream before escorna_tab.init()
+    Serial.begin(9600);
+    
     escorna_tab.init();
 }
 
 
 void loop()
 {
+    // main loop
     escorna_tab.update();
 }
 
