@@ -2,11 +2,14 @@
 #ifndef _CONFIGURATION_H
 #define _CONFIGURATION_H
 
-// send button
-#define PIN_BUTTON A0
+// common interface
+#define PIN_BTN1 2
+#define PIN_LED1 16
+#define PIN_BUZZ 15
+#define PIN_LINK 17
 
 // 9 pins by row (3 tabs)
-#define PIN_TAB_1_1 2
+#define PIN_TAB_1_1 14
 #define PIN_TAB_1_2 3
 #define PIN_TAB_1_3 4
 #define PIN_TAB_2_1 5
@@ -18,9 +21,10 @@
 
 // connected rows (3 tabs by row)
 #define ROW_ACTIVATION_MILLIS 100
-#define ROW_COUNT 2
+#define ROW_COUNT 3
 #define PIN_ROW_1 11
-#define PIN_ROW_2 13
+#define PIN_ROW_2 12
+#define PIN_ROW_3 13
 
 // generic codes
 #define CODE_0 "000"

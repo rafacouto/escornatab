@@ -31,6 +31,9 @@ class EscornaTab
         struct Config
         {
             uint8_t buttonPin;
+            uint8_t led1Pin;
+            uint8_t buzzerPin;
+            uint8_t linkPin;
             uint8_t tabPins[9];
             uint8_t rowPins[ROW_COUNT];
         };
@@ -55,6 +58,17 @@ class EscornaTab
         bool _scanButton();
         bool _sendRow(uint8_t* tabs);
         void _sendCode(uint8_t code);
+
+        bool _link;
+
+        enum
+        {
+            INDICATION_BUTTON,
+            INDICATION_READY,
+            INDICATION_CONNECTED,
+            INDICATION_DISCONNECTED,
+        };
+        void _indicate(uint8_t indication);
 };
 
 #endif // _ESCORNA_TAB_H

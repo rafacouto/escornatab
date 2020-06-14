@@ -22,26 +22,30 @@ EscornaTab::EscornaTab(const Config& cfg, Stream& serial) :
     _cfg(cfg),
     _stream(serial)
 {
+    _link = false;
 }
 
 
 int EscornaTab::init()
 {
-    int p;
-
-    // button pin
+    // common pins
     pinMode(_cfg.buttonPin, INPUT_PULLUP);
+    pinMode(_cfg.led1Pin, OUTPUT);
+    pinMode(_cfg.buzzerPin, OUTPUT);
+    pinMode(_cfg.linkPin, INPUT);
 
     // tab input pins
-    for (p = 0; p < 9; p++) pinMode(_cfg.tabPins[p], INPUT);
+    for (int p = 0; p < 9; p++) pinMode(_cfg.tabPins[p], INPUT);
 
     // row output pins
-    for (p = 0; p < ROW_COUNT; p++)
+    for (int p = 0; p < ROW_COUNT; p++)
     {
         uint8_t pin = _cfg.rowPins[p];
         pinMode(pin, OUTPUT);
         digitalWrite(pin, LOW);
     }
+
+    _indicate(INDICATION_READY);
 
     return 0;
 }
@@ -67,6 +71,15 @@ void EscornaTab::update()
 
         // end of program
         _stream.print(PRG_SEPARATOR);
+
+        _indicate(INDICATION_BUTTON);
+    }
+
+    // check link status
+    if (_link ^ digitalRead(_cfg.linkPin))
+    {
+        _link = !_link;
+        _indicate(_link ? INDICATION_CONNECTED : INDICATION_DISCONNECTED);
     }
 
     delay(20);
@@ -143,4 +156,28 @@ void EscornaTab::_sendCode(uint8_t code)
     }
 }
 
+
+void EscornaTab::_indicate(uint8_t indication)
+{
+    switch (indication)
+    {
+    case INDICATION_READY:
+        tone(_cfg.buzzerPin, 1500, 1000);
+        break;
+
+    case INDICATION_BUTTON:
+        tone(_cfg.buzzerPin, 1500, 200);
+        break;
+
+    case INDICATION_CONNECTED:
+        tone(_cfg.buzzerPin, 1800, 1000);
+        digitalWrite(_cfg.led1Pin, HIGH);
+        break;
+
+    case INDICATION_DISCONNECTED:
+        tone(_cfg.buzzerPin, 1200, 1000);
+        digitalWrite(_cfg.led1Pin, LOW);
+        break;
+    }
+}
 

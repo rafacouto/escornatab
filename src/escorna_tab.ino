@@ -21,16 +21,19 @@
 #include "EscornaTab.h"
 
 // EscornaTab configuration
-static const EscornaTab::Config cfg = 
+static const EscornaTab::Config cfg =
 {
-    buttonPin: PIN_BUTTON,
-    tabPins: 
-    { 
+    buttonPin: PIN_BTN1,
+    led1Pin:   PIN_LED1,
+    buzzerPin: PIN_BUZZ,
+    linkPin:   PIN_LINK,
+    tabPins:
+    {
         PIN_TAB_1_1, PIN_TAB_1_2, PIN_TAB_1_3,
         PIN_TAB_2_1, PIN_TAB_2_2, PIN_TAB_2_3,
         PIN_TAB_3_1, PIN_TAB_3_2, PIN_TAB_3_3,
     },
-    rowPins: { PIN_ROW_1, PIN_ROW_2 }
+    rowPins: { PIN_ROW_1, PIN_ROW_2, PIN_ROW_3 }
 };
 
 
@@ -42,7 +45,7 @@ void setup()
 {
     // initialize serial stream before escorna_tab.init()
     Serial.begin(9600);
-    
+
     escorna_tab.init();
 }
 
