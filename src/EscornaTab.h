@@ -23,6 +23,11 @@
 
 #include "configuration.h"
 
+#define MAX_ROW_COUNT 3
+#if MAX_ROW_COUNT < ROW_COUNT
+#   error "MAX_ROW_COUNT must be increased."
+#endif
+
 
 class EscornaTab
 {
@@ -35,7 +40,7 @@ class EscornaTab
             uint8_t buzzerPin;
             uint8_t linkPin;
             uint8_t tabPins[9];
-            uint8_t rowPins[ROW_COUNT];
+            uint8_t rowPins[MAX_ROW_COUNT];
         };
 
         // instance and configuration
